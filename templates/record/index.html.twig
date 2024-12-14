@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Record index
+{% endblock %}
+
+{% block body %}
+	<h1>Your records</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Rate</th>
+				<th>Remark</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for record in records %}
+				<tr>
+					<td>{{ record.name }}</td>
+					<td>{{ record.rate }}</td>
+					<td>{{ record.remark }}</td>
+					<td>
+						<a class="btn btn-primary mx-1" href="{{ path('app_record_show', {'id': record.id}) }}">Show</a>
+						<a class="btn btn-primary mx-1" href="{{ path('app_record_edit', {'id': record.id}) }}">Edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">No records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a class="btn btn-primary mx-2" href="{{ path('app_record_new') }}">Create a new record</a>
+{% endblock %}

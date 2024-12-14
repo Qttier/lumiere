@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Record
+{% endblock %}
+
+{% block body %}
+	<h1>Edit Record</h1>
+
+	{{ include('record/_form.html.twig', {'button_label': 'Update'}) }}
+
+	<a class="btn btn-primary m-1" href="{{ path('app_record_index') }}">Back to list</a>
+
+
+	{{ include('record/_delete_form.html.twig') }}
+{% endblock %}

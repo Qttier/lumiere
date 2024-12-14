@@ -1,0 +1,53 @@
+{# {% extends 'base.html.twig' %} #}
+
+
+{% block body %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Log in!
+			{% endblock %}
+
+		</title>
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</head>
+	<h1>Register</h1>
+	<div class="p-3">
+		{{ form_errors(form) }}
+
+		{{ form_start(form, {'attr': {'class': 'needs-validation'}}) }}
+		<div class="mb-3">
+			{{ form_label(form.email, 'Email', {'label_attr': {'class': 'form-label'}}) }}
+			{{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+			{{ form_errors(form.email) }}
+		</div>
+		<div class="mb-3">
+			{{ form_label(form.username, 'Username', {'label_attr': {'class': 'form-label'}}) }}
+			{{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+			{{ form_errors(form.username) }}
+		</div>
+		<div class="mb-3">
+			{{ form_label(form.plainPassword, 'Password', {'label_attr': {'class': 'form-label'}}) }}
+			{{ form_widget(form.plainPassword, {'attr': {'class': 'form-control'}}) }}
+			{{ form_errors(form.plainPassword) }}
+		</div>
+		<div class="mb-3 form-check">
+			{{ form_widget(form.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
+			{{ form_label(form.agreeTerms, 'Agree to terms', {'label_attr': {'class': 'form-check-label'}}) }}
+			{{ form_errors(form.agreeTerms) }}
+		</div>
+		<button type="submit" class="btn btn-primary w-100">Register</button>
+		{{ form_end(form) }}
+	</div>
+
+
+	<a href="{{ path('app_login') }}">Allready registered ? Log in !</a>
+
+{% endblock %}

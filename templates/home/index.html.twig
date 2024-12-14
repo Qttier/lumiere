@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!
+{% endblock %}
+
+{% block body %}
+	<div class="container py-5">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<div class="card shadow-sm">
+					<div class="card-header bg-primary text-white text-center">
+						<h1>Welcome</h1>
+					</div>
+					<div class="card-body text-center">
+						<p class="lead">Welcome to your personal database!</p>
+						<p>You can enter all recent media and write down your thoughts about them.</p>
+						<a href="{{ path('app_record_new') }}" class="btn btn-primary mx-2">Add New Media</a>
+						<a href="{{ path('app_list') }}" class="btn btn-primary">Check out some medias</a>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
