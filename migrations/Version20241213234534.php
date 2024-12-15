@@ -18,10 +18,10 @@ final class Version20241213234534 extends AbstractMigration
     }
     public function up(Schema $schema): void
     {
-        $this->addSql("INSERT INTO media_type (type) VALUES ('music')");
-        $this->addSql("INSERT INTO media_type (type) VALUES ('movie')");
-        $this->addSql("INSERT INTO media_type (type) VALUES ('game')");
-        $this->addSql("INSERT INTO media_type (type) VALUES ('book')");
+        $this->addSql("INSERT INTO media_type (type) VALUES ('Music')");
+        $this->addSql("INSERT INTO media_type (type) VALUES ('Movie')");
+        $this->addSql("INSERT INTO media_type (type) VALUES ('Game')");
+        $this->addSql("INSERT INTO media_type (type) VALUES ('Book')");
     }
 
     public function down(Schema $schema): void

@@ -1,23 +1,29 @@
-{{ form_start(form, {'attr': {'class': 'row g-3'}}) }}
-<div class="mb-3">
-	{{ form_label(form.name, 'Name', {'label_attr': {'class': 'form-label'}}) }}
-	{{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
-	{{ form_errors(form.name) }}
+<div class="card">
+	<div class="card-body">
+		<h5 class="card-title">Create a new record</h5>
+		<h6 class="card-subtitle mb-2 text-muted">Please enter informations about a new media</h6>
+		{{ form_start(form, {'attr': {'class': 'row g-3'}}) }}
+		<div class="mb-3">
+			{{ form_label(form.name, 'Name', {'label_attr': {'class': 'form-label'}}) }}
+			{{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+			{{ form_errors(form.name) }}
+		</div>
+		<div class="mb-3">
+			{{ form_label(form.rate, 'Rate', {'label_attr': {'class': 'form-label'}}) }}
+			{{ form_widget(form.rate, {'attr': {'class': 'form-control'}}) }}
+			{{ form_errors(form.rate) }}
+		</div>
+		<div class="mb-3">
+			{{ form_label(form.remark, 'Remark', {'label_attr': {'class': 'form-label'}}) }}
+			{{ form_widget(form.remark, {'attr': {'class': 'form-control'}}) }}
+			{{ form_errors(form.remark) }}
+		</div>
+		<div class="mb-3">
+			{{ form_label(form.type, 'Type', {'label_attr': {'class': 'form-label'}}) }}
+			{{ form_widget(form.type, {'attr': {'class': 'form-select'}}) }}
+			{{ form_errors(form.type) }}
+		</div>
+		<button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+		{{ form_end(form) }}
+	</div>
 </div>
-<div class="mb-3">
-	{{ form_label(form.rate, 'Rate', {'label_attr': {'class': 'form-label'}}) }}
-	{{ form_widget(form.rate, {'attr': {'class': 'form-control'}}) }}
-	{{ form_errors(form.rate) }}
-</div>
-<div class="mb-3">
-	{{ form_label(form.remark, 'Remark', {'label_attr': {'class': 'form-label'}}) }}
-	{{ form_widget(form.remark, {'attr': {'class': 'form-control'}}) }}
-	{{ form_errors(form.remark) }}
-</div>
-<div class="mb-3">
-	{{ form_label(form.type, 'Type', {'label_attr': {'class': 'form-label'}}) }}
-	{{ form_widget(form.type, {'attr': {'class': 'form-select'}}) }}
-	{{ form_errors(form.type) }}
-</div>
-<button class="btn btn-primary">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}

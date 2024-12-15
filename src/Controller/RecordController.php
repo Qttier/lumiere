@@ -17,6 +17,10 @@ final class RecordController extends AbstractController
     #[Route(name: 'app_record_index', methods: ['GET'])]
     public function index(RecordRepository $recordRepository): Response
     {
+        $user = $this->getUser();
+        if (!$user instanceof \App\Entity\User) {
+            return $this->redirectToRoute('app_login');
+        }
         return $this->render('record/index.html.twig', [
             'records' => $recordRepository->findBy(['owner' => $this->getUser()->getId()]),
         ]);
@@ -25,6 +29,10 @@ final class RecordController extends AbstractController
     #[Route('/new', name: 'app_record_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $user = $this->getUser();
+        if (!$user instanceof \App\Entity\User) {
+            return $this->redirectToRoute('app_login');
+        }
         $record = new Record();
         $form = $this->createForm(RecordType::class, $record);
         $form->handleRequest($request);
@@ -46,6 +54,10 @@ final class RecordController extends AbstractController
     #[Route('/{id}', name: 'app_record_show', methods: ['GET'])]
     public function show(Record $record): Response
     {
+        $user = $this->getUser();
+        if (!$user instanceof \App\Entity\User) {
+            return $this->redirectToRoute('app_login');
+        }
         return $this->render('record/show.html.twig', [
             'record' => $record,
         ]);
@@ -54,6 +66,10 @@ final class RecordController extends AbstractController
     #[Route('/{id}/edit', name: 'app_record_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Record $record, EntityManagerInterface $entityManager): Response
     {
+        $user = $this->getUser();
+        if (!$user instanceof \App\Entity\User) {
+            return $this->redirectToRoute('app_login');
+        }
         $form = $this->createForm(RecordType::class, $record);
         $form->handleRequest($request);
 
@@ -72,6 +88,10 @@ final class RecordController extends AbstractController
     #[Route('/{id}', name: 'app_record_delete', methods: ['POST'])]
     public function delete(Request $request, Record $record, EntityManagerInterface $entityManager): Response
     {
+        $user = $this->getUser();
+        if (!$user instanceof \App\Entity\User) {
+            return $this->redirectToRoute('app_login');
+        }
         if ($this->isCsrfTokenValid('delete'.$record->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($record);
             $entityManager->flush();

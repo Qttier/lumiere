@@ -12,6 +12,10 @@ class ListController extends AbstractController
     #[Route('/list', name: 'app_list')]
     public function index(RecordRepository $recordRepository): Response
     {
+        $user = $this->getUser();
+        if (!$user instanceof \App\Entity\User) {
+            return $this->redirectToRoute('app_login');
+        }
         $records = $recordRepository->findAll();
         return $this->render('list/index.html.twig', [
             'records' => $records,
