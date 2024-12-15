@@ -63,6 +63,8 @@ final class RecordController extends AbstractController
             // Effectue les modifications dans la base de données.
             $entityManager->flush();
 
+            // Ajoute un message pour informer l'utilisateur que l'entité a été modifié
+            $this->addFlash('success', 'Record succesfully added');
             // Redirige vers la page des enregistrements une fois l'enregistrement effectué.
             return $this->redirectToRoute('app_record_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -115,6 +117,8 @@ final class RecordController extends AbstractController
             // Enregistre les modifications dans la base de données.
             $entityManager->flush();
 
+            // Ajoute un message pour informer l'utilisateur que l'entité a été modifié
+            $this->addFlash('success', 'Record succesfully edited');
             // Redirige vers la page des enregistrements après modification.
             return $this->redirectToRoute('app_record_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -145,6 +149,9 @@ final class RecordController extends AbstractController
             $entityManager->remove($record);
             // Applique les changements à la base de données.
             $entityManager->flush();
+
+            // Ajoute un message pour informer l'utilisateur que l'entité a été supprimée
+            $this->addFlash('success', 'Record succesfully removed');
         }
 
         // Redirige vers la page des enregistrements après suppression.
