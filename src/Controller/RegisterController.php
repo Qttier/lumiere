@@ -51,7 +51,7 @@ class RegisterController extends AbstractController
             $entityManager->flush();
 
             // Ajoute un message pour informer l'utilisateur que l'entité a été modifié
-            $this->addFlash('success', 'Succesfully registred');
+            $this->addFlash('success', 'Succesfully loged');
 
             // Redirige vers la page de connexion après une inscription réussie.
             return $this->redirectToRoute('app_login');
